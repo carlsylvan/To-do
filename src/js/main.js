@@ -7,17 +7,21 @@ removeButton.addEventListener("click", removeListItem);
 
 function addListItem() {
     let li = document.createElement("li");
+    let removeButton = document.createElement("button");
     let inputValue = document.getElementById("myInput").value;
+    removeButton.innerHTML = "Ta bort";
+    removeButton.id = "remove"
     li.innerHTML = inputValue;
     if (inputValue === "") {
         alert("Write a new task!");
     } else {
         document.getElementById("taskList").appendChild(li);
+        document.getElementById("taskList").appendChild(removeButton);
     }
 }
 
 function removeListItem() {
-    
+    document.getElementById("newtask").remove;
 }
 
 
