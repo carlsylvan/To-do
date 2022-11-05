@@ -3,6 +3,7 @@ let addButton = document.getElementById("addButton");
 let i = 0;
 
 addButton.addEventListener("click", addListItem); 
+removeButton.addEventListener("click", removeListItem);
 
 function addListItem() {
     let li = document.createElement("li");
@@ -13,6 +14,10 @@ function addListItem() {
     } else {
         document.getElementById("taskList").appendChild(li);
     }
+}
+
+function removeListItem() {
+    
 }
 
 
