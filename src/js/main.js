@@ -1,7 +1,6 @@
 let listItems = document.getElementsByTagName("li");
 let addButton = document.getElementById("addButton");
 let removeButton = document.getElementById("remove");
-let i = 0;
 
 addButton.addEventListener("click", addListItem); 
 removeButton.addEventListener("click", removeListItem);
@@ -23,7 +22,8 @@ function addListItem() {
 }
 
 function removeListItem() {
-    document.getElementById("newtask").style.display = "none";
+    let element = this.parentElement;
+    element.style.display = "none";
     console.log("klick");
 }
 
