@@ -1,11 +1,18 @@
 class ListItem {
-    constructor (tasknumber, task) {
-        this.tasknumber = tasknumber;
-        this.task = task;
+    constructor (taskId, taskDescription) {
+        this.taskId = taskId;
+        this.taskDescription = taskDescription;
     }
 }
+let listItems = [];
 
-let listItems = ["Dammsug", "Hugga ved", "Laga mat"]
+for (let i = 0; i < 3; i++) {
+    let newListItem = new ListItem ((i + 1), "Task description");
+    listItems.push(newListItem);
+} 
+
+
+console.log(listItems);
 
 let addButton = document.getElementById("addButton");
 
@@ -18,11 +25,11 @@ for (let i = 0; i < listItems.length; i++) {
 
     newRemove.innerHTML = "Ta bort";
     newRemove.class = "remove"
-    newLi.innerHTML = listItems[i];
-    newLi.id = "newTask" + i;
+    newLi.innerHTML = listItems[i].taskDescription;
+    newLi.id = "task" + listItems[i].taskId;
 
     document.getElementById("taskList").appendChild(newLi);
-    document.getElementById("newTask" + i).appendChild(newRemove);
+    document.getElementById("task" + listItems[i].taskId).appendChild(newRemove);
 }
 
 function addListItem() {
@@ -35,6 +42,9 @@ function addListItem() {
     newRemove.id = "remove"
     newLi.innerHTML = inputValue;
     newLi.id = "newTask";
+
+    let newListItem = new ListItem (i);
+    listItems.push(newListItem);
     if (inputValue === "") {
         alert("Write a new task!");
     } else {
