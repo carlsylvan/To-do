@@ -8,3 +8,11 @@ header {
         margin: 0;
     }
 }
+
+body {
+    #taskList {
+        .taskList--checked {
+            text-decoration: line-through;
+        }
+    }
+}

@@ -1,14 +1,36 @@
-let listItems = document.getElementsByTagName("li");
+class ListItem {
+    constructor (tasknumber, task) {
+        this.tasknumber = tasknumber;
+        this.task = task;
+    }
+}
+
+let listItems = ["Dammsug", "Hugga ved", "Laga mat"]
+
 let addButton = document.getElementById("addButton");
-let removeButton = document.getElementById("remove");
 
 addButton.addEventListener("click", addListItem); 
-removeButton.addEventListener("click", removeListItem);
+// removeButton.addEventListener("click", removeListItem);
+
+for (let i = 0; i < listItems.length; i++) {
+    let newLi = document.createElement("li");
+    let newRemove = document.createElement("button");
+
+    newRemove.innerHTML = "Ta bort";
+    newRemove.class = "remove"
+    newLi.innerHTML = listItems[i];
+    newLi.id = "newTask" + i;
+
+    document.getElementById("taskList").appendChild(newLi);
+    document.getElementById("newTask" + i).appendChild(newRemove);
+}
 
 function addListItem() {
     let newLi = document.createElement("li");
     let newRemove = document.createElement("button");
     let inputValue = document.getElementById("myInput").value;
+    listItems.push(inputValue);
+
     newRemove.innerHTML = "Ta bort";
     newRemove.id = "remove"
     newLi.innerHTML = inputValue;
@@ -21,22 +43,25 @@ function addListItem() {
     }
 }
 
+
+
 function removeListItem() {
-    let element = this.parentElement;
-    element.style.display = "none";
-    console.log("klick");
+
 }
 
-
 // for (let i = 0; i < listItems.length; i++) {
-//     let span = document.createElement("span");
-//     let txt = document.createTextNode("\u00D7");
-//     span.className = "close";
-//     span.appendChild(txt);
-//     listItems[i].appendChild(span);
-// }
+//     let newLi = document.createElement("li");
+//     let newRemove = document.createElement("button");
+//     listItems.push(inputValue);
 
-// function removeListItem() {
-//     var span = this.parentElement;
-//     span.style.display = "none";
-// }
+//     newRemove.innerHTML = "Ta bort";
+//     newRemove.id = "remove"
+//     newLi.innerHTML = inputValue;
+//     newLi.id = "newTask";
+
+//     if (inputValue === "") {
+//         alert("Write a new task!");
+//     } else {
+//         document.getElementById("taskList").appendChild(newLi);
+//         document.getElementById("newTask").appendChild(newRemove);
+//     }
