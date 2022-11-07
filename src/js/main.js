@@ -1,16 +1,15 @@
-class ListItem {
+class Task {
     constructor (taskId, taskDescription) {
         this.taskId = taskId;
         this.taskDescription = taskDescription;
     }
 }
-let listItems = [];
 
-for (let i = 0; i < 3; i++) {
-    let newListItem = new ListItem ((i + 1), "Task description");
-    listItems.push(newListItem);
-} 
+let task1 = new Task(1, "Hugga ved");
+let task2 = new Task(2, "Ladda kaminen");
+let task3 = new Task(3, "Tänd brasan");
 
+let listItems = [task1, task2, task3];
 
 console.log(listItems);
 
@@ -24,7 +23,7 @@ for (let i = 0; i < listItems.length; i++) {
     let newRemove = document.createElement("button");
 
     newRemove.innerHTML = "Ta bort";
-    newRemove.class = "remove"
+    newRemove.id = "remove" + (listItems[i].taskId);
     newLi.innerHTML = listItems[i].taskDescription;
     newLi.id = "task" + listItems[i].taskId;
 
@@ -33,45 +32,51 @@ for (let i = 0; i < listItems.length; i++) {
 }
 
 function addListItem() {
-    let newLi = document.createElement("li");
-    let newRemove = document.createElement("button");
+    // let newLi = document.createElement("li");
+    // let newRemove = document.createElement("button");
     let inputValue = document.getElementById("myInput").value;
-    listItems.push(inputValue);
 
-    newRemove.innerHTML = "Ta bort";
-    newRemove.id = "remove"
-    newLi.innerHTML = inputValue;
-    newLi.id = "newTask";
+    // newRemove.innerHTML = "Ta bort";
+    // newRemove.id = "remove" + (listItems.length + 1);
+    // newLi.innerHTML = inputValue;
+    // newLi.id = "task" + (listItems.length + 1);
 
-    let newListItem = new ListItem (i);
+    newListItem = new Task ((listItems.length + 1), inputValue);
     listItems.push(newListItem);
-    if (inputValue === "") {
-        alert("Write a new task!");
-    } else {
+    for (let i = 0; i < listItems.length; i++) {
+        let newLi = document.createElement("li");
+        let newRemove = document.createElement("button");
+    
+        newRemove.innerHTML = "Ta bort";
+        newRemove.id = "remove" + (listItems[i].taskId);
+        newLi.innerHTML = listItems[i].taskDescription;
+        newLi.id = "task" + listItems[i].taskId;
+    
         document.getElementById("taskList").appendChild(newLi);
-        document.getElementById("newTask").appendChild(newRemove);
+        document.getElementById("task" + listItems[i].taskId).appendChild(newRemove);
     }
-}
-
-
-
-function removeListItem() {
-
+    // if (inputValue === "") {
+    //     alert("Write a new task!");
+    // } else {
+    //     document.getElementById("taskList").appendChild(newLi);
+    //     document.getElementById("task" + (listItems.length)).appendChild(newRemove);
+    // }
 }
 
 // for (let i = 0; i < listItems.length; i++) {
 //     let newLi = document.createElement("li");
 //     let newRemove = document.createElement("button");
-//     listItems.push(inputValue);
 
 //     newRemove.innerHTML = "Ta bort";
-//     newRemove.id = "remove"
-//     newLi.innerHTML = inputValue;
-//     newLi.id = "newTask";
+//     newRemove.id = "remove" + (listItems[i].taskId);
+//     newLi.innerHTML = listItems[i].taskDescription;
+//     newLi.id = "task" + listItems[i].taskId;
 
-//     if (inputValue === "") {
-//         alert("Write a new task!");
-//     } else {
-//         document.getElementById("taskList").appendChild(newLi);
-//         document.getElementById("newTask").appendChild(newRemove);
-//     }
+//     document.getElementById("taskList").appendChild(newLi);
+//     document.getElementById("task" + listItems[i].taskId).appendChild(newRemove);
+// }
+
+console.log(listItems);
+function removeListItem() {
+
+}
