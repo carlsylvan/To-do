@@ -29,6 +29,7 @@ for (let i = 0; i < listItems.length; i++) {
 
     document.getElementById("taskList").appendChild(newLi);
     document.getElementById("task" + listItems[i].taskId).appendChild(newRemove);
+    newRemove.addEventListener("click", removeListItem);
 }
 
 function addListItem() {
@@ -43,7 +44,7 @@ function addListItem() {
 
     newListItem = new Task ((listItems.length + 1), inputValue);
     listItems.push(newListItem);
-    for (let i = 0; i < listItems.length; i++) {
+    for (let i = (listItems.length - 1); i < listItems.length; i++) {
         let newLi = document.createElement("li");
         let newRemove = document.createElement("button");
     
@@ -54,6 +55,7 @@ function addListItem() {
     
         document.getElementById("taskList").appendChild(newLi);
         document.getElementById("task" + listItems[i].taskId).appendChild(newRemove);
+        newRemove.addEventListener("click", removeListItem);
     }
     // if (inputValue === "") {
     //     alert("Write a new task!");
@@ -63,20 +65,16 @@ function addListItem() {
     // }
 }
 
-// for (let i = 0; i < listItems.length; i++) {
-//     let newLi = document.createElement("li");
-//     let newRemove = document.createElement("button");
-
-//     newRemove.innerHTML = "Ta bort";
-//     newRemove.id = "remove" + (listItems[i].taskId);
-//     newLi.innerHTML = listItems[i].taskDescription;
-//     newLi.id = "task" + listItems[i].taskId;
-
-//     document.getElementById("taskList").appendChild(newLi);
-//     document.getElementById("task" + listItems[i].taskId).appendChild(newRemove);
-// }
-
-console.log(listItems);
-function removeListItem() {
-
+function removeListItem(removeID) {
+    removeID = listItems[i]
+    
+    for (let i = (listItems.length); i < listItems.length; i++) {
+        let newLi = document.createElement("li");
+        let newRemove = document.createElement("button");
+    
+        newRemove.innerHTML = "Ta bort";
+        newRemove.id = "remove" + (listItems[i].taskId);
+        newLi.innerHTML = listItems[i].taskDescription;
+        newLi.id = "task" + listItems[i].taskId;
+    }
 }
