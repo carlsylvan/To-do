@@ -16,7 +16,6 @@ console.log(listItems);
 let addButton = document.getElementById("addButton");
 
 addButton.addEventListener("click", addListItem); 
-// removeButton.addEventListener("click", removeListItem);
 
 for (let i = 0; i < listItems.length; i++) {
     let newLi = document.createElement("li");
@@ -24,57 +23,34 @@ for (let i = 0; i < listItems.length; i++) {
 
     newRemove.innerHTML = "Ta bort";
     newRemove.id = "remove" + (listItems[i].taskId);
+    newRemove.addEventListener("click", () => newLi.parentNode.removeChild(newLi));
+
     newLi.innerHTML = listItems[i].taskDescription;
     newLi.id = "task" + listItems[i].taskId;
 
     document.getElementById("taskList").appendChild(newLi);
     document.getElementById("task" + listItems[i].taskId).appendChild(newRemove);
-    newRemove.addEventListener("click", removeListItem);
 }
 
 function addListItem() {
-    // let newLi = document.createElement("li");
-    // let newRemove = document.createElement("button");
     let inputValue = document.getElementById("myInput").value;
-
-    // newRemove.innerHTML = "Ta bort";
-    // newRemove.id = "remove" + (listItems.length + 1);
-    // newLi.innerHTML = inputValue;
-    // newLi.id = "task" + (listItems.length + 1);
 
     newListItem = new Task ((listItems.length + 1), inputValue);
     listItems.push(newListItem);
+    if (inputValue === "") {
+        alert("Skriv en uppgift!");
+    } else {
     for (let i = (listItems.length - 1); i < listItems.length; i++) {
         let newLi = document.createElement("li");
         let newRemove = document.createElement("button");
     
         newRemove.innerHTML = "Ta bort";
         newRemove.id = "remove" + (listItems[i].taskId);
+        newRemove.addEventListener("click", () => newLi.parentNode.removeChild(newLi));
+
         newLi.innerHTML = listItems[i].taskDescription;
         newLi.id = "task" + listItems[i].taskId;
     
         document.getElementById("taskList").appendChild(newLi);
         document.getElementById("task" + listItems[i].taskId).appendChild(newRemove);
-        newRemove.addEventListener("click", removeListItem);
     }
-    // if (inputValue === "") {
-    //     alert("Write a new task!");
-    // } else {
-    //     document.getElementById("taskList").appendChild(newLi);
-    //     document.getElementById("task" + (listItems.length)).appendChild(newRemove);
-    // }
-}
-
-function removeListItem(removeID) {
-    removeID = listItems[i]
-    
-    for (let i = (listItems.length); i < listItems.length; i++) {
-        let newLi = document.createElement("li");
-        let newRemove = document.createElement("button");
-    
-        newRemove.innerHTML = "Ta bort";
-        newRemove.id = "remove" + (listItems[i].taskId);
-        newLi.innerHTML = listItems[i].taskDescription;
-        newLi.id = "task" + listItems[i].taskId;
-    }
-}
