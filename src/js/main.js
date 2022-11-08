@@ -46,6 +46,7 @@ function addListItem() {
     
         newRemove.innerHTML = "Ta bort";
         newRemove.id = "remove" + (listItems[i].taskId);
+
         newRemove.addEventListener("click", () => newLi.parentNode.removeChild(newLi));
 
         newLi.innerHTML = listItems[i].taskDescription;
@@ -54,3 +55,6 @@ function addListItem() {
         document.getElementById("taskList").appendChild(newLi);
         document.getElementById("task" + listItems[i].taskId).appendChild(newRemove);
     }
+    console.log(listItems);
+    }   
+}
