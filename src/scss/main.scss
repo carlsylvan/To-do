@@ -4,13 +4,28 @@ html, body {
 
 header {
     background-color: antiquewhite;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     h1 {
         margin: 0;
     }
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     #taskList {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        font-size: x-large;
+        button {
+            margin-left: 10px;
+        }
         .taskList--checked {
             text-decoration: line-through;
         }
