@@ -11,8 +11,6 @@ let task3 = new Task(3, "Tänd brasan");
 
 let listItems = [task1, task2, task3];
 
-console.log(listItems);
-
 let addButton = document.getElementById("addButton");
 
 addButton.addEventListener("click", addListItem); 
