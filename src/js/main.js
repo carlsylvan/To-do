@@ -11,6 +11,9 @@ let task3 = new Task(3, "Tänd brasan");
 
 let listItems = [task1, task2, task3];
 
+localStorage.setItem("listItems", JSON.stringify(listItems));
+let listItemsFromLs = localStorage.getItem("listItems");
+
 let addButton = document.getElementById("addButton");
 
 addButton.addEventListener("click", addListItem); 
@@ -56,3 +59,6 @@ function addListItem() {
     console.log(listItems);
     }   
 }
+
+
+// Uppdatera classen Task (listitems i localStorage) till att ha fler värden (t.ex finished/inte), ha listItems i localstorage.
