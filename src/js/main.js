@@ -1,13 +1,26 @@
-import { Task } from ".models/task";
+import { Task } from "./models/task"
 
-let task1 = new Task(1, "Hugga ved");
-let task2 = new Task(2, "Ladda kaminen");
-let task3 = new Task(3, "Tänd brasan");
+function loadToLS() {
+    localStorage.setItem("listItems", JSON.stringify(listItems));
+};
+
+function loadFromLS() {
+    listItemsFromLs = localStorage.getItem("listItems");
+    let listItemsObj = JSON.parse(listItemsFromLs);
+}
+
+let task1 = new Task(1, "Hugga ved", "unfinished");
+let task2 = new Task(2, "Ladda kaminen", "unfinished");
+let task3 = new Task(3, "Tänd brasan", "unfinished");
 
 let listItems = [task1, task2, task3];
+let listItemsFromLs = [];
 
-localStorage.setItem("listItems", JSON.stringify(listItems));
-let listItemsFromLs = localStorage.getItem("listItems");
+loadToLS();
+loadFromLS();
+
+// let listItemsObj = JSON.parse(listItemsFromLs);
+console.log(listItemsObj);
 
 let addButton = document.getElementById("addButton");
 
