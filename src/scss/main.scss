@@ -4,12 +4,16 @@ html, body {
 
 header {
     background-color: antiquewhite;
-    width: 50%;
+    width: 70%;
+    height: 100px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     h1 {
         margin: 0;
+    }
+    input {
+        width: 60%;
     }
 }
 
@@ -18,7 +22,7 @@ body {
     flex-direction: column;
     align-items: center;
     #taskList {
-        width: 50%;
+        width: 70%;
         display: flex;
         flex-direction: column;
         gap: 10px;
@@ -29,5 +33,12 @@ body {
         .taskList--checked {
             text-decoration: line-through;
         }
+    }
+    #removedList {
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        font-size: x-large;
     }
 }
