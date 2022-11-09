@@ -1,9 +1,4 @@
-class Task {
-    constructor (taskId, taskDescription) {
-        this.taskId = taskId;
-        this.taskDescription = taskDescription;
-    }
-}
+import { Task } from ".models/task";
 
 let task1 = new Task(1, "Hugga ved");
 let task2 = new Task(2, "Ladda kaminen");
