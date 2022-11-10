@@ -30,9 +30,17 @@ body {
         button {
             margin-left: 10px;
         }
-        .taskList--checked {
+        .checked {
             text-decoration: line-through;
         }
+    }
+    #finishedList {
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        font-size: x-large;
+        color: green;
     }
     #removedList {
         width: 70%;
@@ -40,5 +48,6 @@ body {
         flex-direction: column;
         gap: 10px;
         font-size: x-large;
+        text-decoration: line-through;
     }
 }

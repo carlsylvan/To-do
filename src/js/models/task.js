@@ -1,6 +1,5 @@
 export class Task {
-    constructor (checked, taskDescription, status) {
-        this.checked = checked;
+    constructor (taskDescription, status) {
         this.taskDescription = taskDescription;
         this.status = status;
     }
