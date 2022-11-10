@@ -1,18 +1,33 @@
 import {Task} from "./models/task"
 
+//* Placeholder tasks, will load if LS is empty
 let task1 = new Task("Hugga ved", "unfinished");
 let task2 = new Task("Ladda kaminen", "unfinished");
 let task3 = new Task("Tänd brasan", "unfinished");
 
 let listItems = [];
-let addButton = document.getElementById("addButton");
 
+//* when first loading the page, adds placeholder tasks if none are saved from previous visit
+function firstLoad() {
+    let localStorageCheck = JSON.parse(localStorage.getItem("listItems"));
+    if (localStorageCheck === null) {
+        listItems = [task1, task2, task3];
+        updateHtml()
+    } else {
+        loadFromLS();
+        updateHtml();
+    }
+}
+
+let addButton = document.getElementById("addButton");
 addButton.addEventListener("click", addListItem); 
 
+//* Load current listItems to LS
 function loadToLS() {
     localStorage.setItem("listItems", JSON.stringify(listItems));
 };
 
+//* Load current LS to listItems
 function loadFromLS() {
     let itemsFromLs = JSON.parse(localStorage.getItem("listItems"));
     listItems = itemsFromLs.map((mappedList) => {
@@ -20,6 +35,7 @@ function loadFromLS() {
     })
 }
 
+//* Update html using listItems
 function updateHtml() {
     document.getElementById("taskList").innerHTML = "";
     document.getElementById("finishedList").innerHTML = "";
@@ -65,11 +81,14 @@ function updateHtml() {
         let newLi = document.createElement("li");
         newLi.innerHTML = removedList[i].taskDescription;
         document.getElementById("removedList").appendChild(newLi);
+        newLi.addEventListener("click", () => removedList[i].status = "unfinished");
+        newLi.addEventListener("click", () => updateHtml());
     }
 
     loadToLS();
 } 
 
+//* Add list items function
 function addListItem() {
         let inputValue = document.getElementById("myInput").value;
         inputClear();
@@ -84,20 +103,25 @@ function addListItem() {
  
 }
 
+//* Function for clearing textbox after writing new task
 function inputClear(){
     document.getElementById("myInput").value = "";
 }
 
-function firstLoad() {
-    let localStorageCheck = JSON.parse(localStorage.getItem("listItems"));
-    if (localStorageCheck === null) {
-        listItems = [task1, task2, task3];
-        updateHtml()
-    } else {
-        loadFromLS();
-        updateHtml();
-    }
+//* Function for clearing all items from LS
+function clearAll() {
+    localStorage.clear();
+    firstLoad();
 }
+
+document.getElementById("clearAll").addEventListener("click", clearAll);
+
 firstLoad();
 
-// Uppdatera classen Task (listitems i localStorage) till att ha fler värden (t.ex finished/inte), ha listItems i localstorage. När klicka ta bort, ändra i listitem från Unfinished till Removed.
+/* Project to do list:
+
+* Add function for clearing removed items
+* Add function for ordering list items
+* Better html/scss design (...)
+
+*/
