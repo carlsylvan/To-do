@@ -127,9 +127,9 @@ document.getElementById("reset").addEventListener("click", reset);
 firstLoad();
 document.getElementById("myInput").focus();
 
-/* Project to do list:
+/* Project to do list (To-do list to-do list):
 
-* Add all html using js
+* Add variables for targeting and creating html (Why isn't it working when I try!!!!!)
 * Add function for clearing removed items
 * Add function for ordering list items
 * Better html/scss design (...)
