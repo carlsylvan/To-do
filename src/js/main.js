@@ -7,7 +7,7 @@ let task3 = new Task("Tända brasan", "unfinished");
 
 let listItems = [];
 
-//* when first loading the page, adds placeholder tasks if none are saved from previous visit
+//* when first loading the page. Adds placeholder tasks if none are saved from previous visit
 function firstLoad() {
     let localStorageCheck = JSON.parse(localStorage.getItem("listItems"));
     if (localStorageCheck === null) {
@@ -19,9 +19,6 @@ function firstLoad() {
         updateHtml();
     }
 }
-
-let addButton = document.getElementById("addButton");
-addButton.addEventListener("click", addListItem); 
 
 //* Load current listItems to LS
 function loadToLS() {
@@ -87,6 +84,7 @@ function updateHtml() {
     }
 
     loadToLS();
+    document.getElementById("myInput").focus();
 } 
 
 //* Add list items function
@@ -103,6 +101,8 @@ function addListItem() {
             updateHtml();
         }
 }
+let addButton = document.getElementById("addButton");
+addButton.addEventListener("click", addListItem); 
 
 //* Function for clearing textbox after writing new task
 function inputClear() {
@@ -120,10 +120,13 @@ function reset() {
 
 document.getElementById("reset").addEventListener("click", reset);
 
+//* Load page and focus on input box
 firstLoad();
+document.getElementById("myInput").focus();
 
 /* Project to do list:
 
+* Add all html using js
 * Add function for clearing removed items
 * Add function for ordering list items
 * Better html/scss design (...)
