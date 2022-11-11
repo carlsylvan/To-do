@@ -111,11 +111,15 @@ function inputClear() {
 
 //* Function for clearing all items from LS
 function reset() {
-    localStorage.clear();
-    let resetTask = new Task("Add a task", "unfinished");
-    listItems = [resetTask];
-    localStorage.setItem("listItems", JSON.stringify(listItems));
-    location.reload();
+    if (confirm("Are you sure you want to remove your tasks?") === true) {
+        localStorage.clear();
+        let resetTask = new Task("Add a task", "unfinished");
+        listItems = [resetTask];
+        localStorage.setItem("listItems", JSON.stringify(listItems));
+        location.reload();
+    } else {
+        location.reload();
+    }
 }
 
 document.getElementById("reset").addEventListener("click", reset);
