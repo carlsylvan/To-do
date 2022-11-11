@@ -12,7 +12,8 @@ function firstLoad() {
     let localStorageCheck = JSON.parse(localStorage.getItem("listItems"));
     if (localStorageCheck === null) {
         listItems = [task1, task2, task3];
-        updateHtml()
+        loadToLS();
+        updateHtml();
     } else {
         loadFromLS();
         updateHtml();
@@ -68,7 +69,7 @@ function updateHtml() {
         let newLi = document.createElement("li");
         let removeButton = document.createElement("button");
         removeButton.innerHTML = "Remove";
-        newLi.innerHTML = checkedList[i].taskDescription;
+        newLi.innerHTML = checkedList[i].taskDescription + " &#10004;";
         document.getElementById("finishedList").appendChild(newLi);
         document.getElementById("finishedList").append(removeButton);
         removeButton.addEventListener("click", () => checkedList[i].status = "removed");
@@ -93,28 +94,31 @@ function addListItem() {
         let inputValue = document.getElementById("myInput").value;
         inputClear();
         newListItem = new Task (inputValue, "unfinished");
+        document.getElementById("myInput").focus();
         if (inputValue === "") {
-            alert("Skriv en uppgift!");
+            alert("Write a new task!");
         } else {
             listItems.push(newListItem);
             loadToLS();
             updateHtml();
         }
- 
 }
 
 //* Function for clearing textbox after writing new task
-function inputClear(){
+function inputClear() {
     document.getElementById("myInput").value = "";
 }
 
 //* Function for clearing all items from LS
-function clearAll() {
+function reset() {
     localStorage.clear();
-    firstLoad();
+    let resetTask = new Task("Add a task", "unfinished");
+    listItems = [resetTask];
+    localStorage.setItem("listItems", JSON.stringify(listItems));
+    location.reload();
 }
 
-document.getElementById("clearAll").addEventListener("click", clearAll);
+document.getElementById("reset").addEventListener("click", reset);
 
 firstLoad();
 
