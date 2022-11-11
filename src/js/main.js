@@ -84,7 +84,6 @@ function updateHtml() {
     }
 
     loadToLS();
-    document.getElementById("myInput").focus();
 } 
 
 //* Add list items function
