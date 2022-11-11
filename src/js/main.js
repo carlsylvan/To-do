@@ -3,7 +3,7 @@ import {Task} from "./models/task"
 //* Placeholder tasks, will load if LS is empty
 let task1 = new Task("Hugga ved", "unfinished");
 let task2 = new Task("Ladda kaminen", "unfinished");
-let task3 = new Task("Tänd brasan", "unfinished");
+let task3 = new Task("Tända brasan", "unfinished");
 
 let listItems = [];
 
